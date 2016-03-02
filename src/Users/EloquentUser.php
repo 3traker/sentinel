@@ -42,9 +42,19 @@ class EloquentUser extends Model implements RoleableInterface, PermissibleInterf
     protected $fillable = [
         'email',
         'password',
-        'last_name',
-        'first_name',
+        'name',
+        'birthday',
+        'phone',
         'permissions',
+        'google_id',
+        'facebook_id',
+        'instagram_id',
+        'vkontakte_id',
+        'country_id',
+        'city_id',
+        'region_id',
+        'use_phone',
+        'instagram_nickname',
     ];
 
     /**
@@ -62,7 +72,7 @@ class EloquentUser extends Model implements RoleableInterface, PermissibleInterf
      *
      * @var array
      */
-    protected $loginNames = ['email'];
+    protected $loginNames = ['email','google_id','facebook_id','instagram_id','vkontakte_id'];
 
     /**
      * The Eloquent roles model name.
@@ -407,7 +417,7 @@ class EloquentUser extends Model implements RoleableInterface, PermissibleInterf
             $this->throttle()->delete();
         }
 
-        return parent::delete();
+        parent::delete();
     }
 
     /**
